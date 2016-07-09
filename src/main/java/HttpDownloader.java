@@ -36,7 +36,7 @@ public class HttpDownloader implements Downloader {
         }
         if (!fileName.contains(".") && mimeType != null)
             fileName.concat(mimeType);
-
+        
         try (FileOutputStream fos = new FileOutputStream(fileName)) {
             ReadableByteChannel rbc = Channels.newChannel(is);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
