@@ -2,7 +2,7 @@ package generator;
 
 import com.google.inject.Singleton;
 
-import java.net.URL;
+import java.net.URI;
 import java.util.UUID;
 
 /**
@@ -13,7 +13,7 @@ import java.util.UUID;
  */
 @Singleton
 public class FileNameGenerator {
-    public static String generate(URL url) {
+    public static String generate(URI url) {
         String path = url.getPath();
         String fileName;
         while (path.lastIndexOf("/") == path.length() - 1)

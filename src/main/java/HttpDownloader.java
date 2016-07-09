@@ -4,7 +4,7 @@ import generator.FileNameGenerator;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
+import java.net.URI;
 import java.net.URLConnection;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -21,8 +21,8 @@ public class HttpDownloader implements Downloader {
     }
 
     @Override
-    public void download(URL url) throws IOException {
-        URLConnection conn = url.openConnection();
+    public void download(URI uri) throws IOException {
+        URLConnection conn = uri.toURL().openConnection();
         InputStream is = conn.getInputStream();
         String mimeType = URLConnection.guessContentTypeFromStream(is);
         String presetFileName = conn.getHeaderField("Content-Disposition");
@@ -32,11 +32,11 @@ public class HttpDownloader implements Downloader {
         if (presetFileName != null && presetFileName.indexOf("=") != -1) {
             fileName = presetFileName.split("=")[1]; //getting value after '='
         } else {
-            fileName = fng.generate(url);
+            fileName = fng.generate(uri);
         }
         if (!fileName.contains(".") && mimeType != null)
             fileName.concat(mimeType);
-        
+
         try (FileOutputStream fos = new FileOutputStream(fileName)) {
             ReadableByteChannel rbc = Channels.newChannel(is);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
