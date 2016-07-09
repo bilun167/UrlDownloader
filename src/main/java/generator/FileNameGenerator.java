@@ -19,7 +19,7 @@ public class FileNameGenerator {
         while (path.lastIndexOf("/") == path.length() - 1)
             path = path.substring(0, path.length() - 1);
 
-        if (path.lastIndexOf("/") > 0)
+        if (path.lastIndexOf("/") >= 0)
             fileName = path.substring(path.lastIndexOf("/") + 1);
         else
             fileName = UUID.randomUUID().toString();
