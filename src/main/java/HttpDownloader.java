@@ -23,6 +23,11 @@ public class HttpDownloader implements Downloader {
     @Override
     public void download(URI uri) throws IOException {
         URLConnection conn = uri.toURL().openConnection();
+        /*
+        String userpass = username + ":" + password;
+        String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
+        conn.setRequestProperty ("Authorization", basicAuth);
+        */
         InputStream is = conn.getInputStream();
         String mimeType = URLConnection.guessContentTypeFromStream(is);
         String presetFileName = conn.getHeaderField("Content-Disposition");
@@ -41,5 +46,7 @@ public class HttpDownloader implements Downloader {
             ReadableByteChannel rbc = Channels.newChannel(is);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
         }
+
+        is.close();
     }
 }

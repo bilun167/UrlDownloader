@@ -20,5 +20,14 @@ public class Main {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
+        FtpDownloader ftpDownloader = dlInjector.getInstance(FtpDownloader.class);
+        try {
+            ftpDownloader.download(new URI("ftp://speedtest.tele2.net/3MB.zip"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }
