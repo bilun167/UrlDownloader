@@ -1,5 +1,7 @@
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import downloader.FtpDownloader;
+import downloader.HttpDownloader;
 import guice.MainModule;
 
 import java.io.IOException;

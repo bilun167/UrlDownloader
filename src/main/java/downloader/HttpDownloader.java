@@ -1,3 +1,5 @@
+package downloader;
+
 import com.google.inject.Inject;
 import generator.FileNameGenerator;
 

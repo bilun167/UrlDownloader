@@ -1,3 +1,5 @@
+package downloader;
+
 import com.jcraft.jsch.*;
 
 import javax.swing.*;
