@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import downloader.*;
+import exception.DownloadException;
 import guice.MainModule;
 
 import java.io.File;
@@ -40,8 +41,8 @@ public class DownloadExecutor {
             return httpDownloader;
     }
 
-    public List<CompletableFuture<File>> download(String... urls) {
-        return Arrays.stream(urls).map(site -> {
+    public CompletableFuture<List<File>> download(String... urls) {
+        List<CompletableFuture<File>> futures = Arrays.stream(urls).map(site -> {
             CompletableFuture<File> cf = new CompletableFuture<>();
             CompletableFuture.supplyAsync(() -> {
                 try {
@@ -55,24 +56,23 @@ public class DownloadExecutor {
             }, executorService);
             return cf;
         }).collect(Collectors.toList());
-    }
 
-    public CompletableFuture<List<File>> allDone(List<CompletableFuture<File>> futures) {
         CompletableFuture<Void> allDoneFuture =
                 CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()]));
-        return allDoneFuture.thenApply(v ->
-                futures.stream().
-                        map(future -> future.join()).
-                        collect(Collectors.toList())
+
+        return allDoneFuture.thenApply(v -> futures.stream().
+                map(future -> future.join()).collect(Collectors.toList())
         );
     }
 
     public static void main(String[] args) {
         DownloadExecutor dl = new DownloadExecutor();
-        List<CompletableFuture<File>> futures =
+        CompletableFuture<List<File>> files =
                 dl.download("http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
                 "ftp://speedtest.tele2.net/1MB.zip",
                 "sftp://taihuynh@tais-mbp://Users/taihuynh/jayeson/workspace/jayeson.portal.admin/app-client/typings.json");
-        dl.allDone(futures).join();
+
+        //
+        files.join();
     }
 }

@@ -1,5 +1,7 @@
 package downloader;
 
+import exception.DownloadException;
+
 import java.io.File;
 
 /**

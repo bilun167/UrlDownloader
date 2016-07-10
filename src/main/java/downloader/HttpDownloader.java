@@ -49,7 +49,7 @@ public class HttpDownloader extends AbstractDownloader {
             ReadableByteChannel rbc = Channels.newChannel(is);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
         }
-System.out.println(fileName);
+
         is.close();
         return new File(fileName);
     }

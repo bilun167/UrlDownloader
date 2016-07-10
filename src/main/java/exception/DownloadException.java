@@ -1,4 +1,4 @@
-package downloader;
+package exception;
 
 /**
  * Created by taihuynh on 10/7/16.
