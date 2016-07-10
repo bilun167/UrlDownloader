@@ -11,5 +11,7 @@ parallelExecution in Test := true
 libraryDependencies ++= Seq(
 	"com.google.inject" % "guice" % "3.0",
 	"com.jcraft" % "jsch" % "0.1.53",
+	"com.google.guava" % "guava" % "19.0",
+	"com.google.guava" % "guava-collections" % "r03",
 	"junit" % "junit" % "4.12" % Test
 )

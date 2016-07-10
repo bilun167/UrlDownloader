@@ -3,6 +3,7 @@ package downloader;
 import com.google.inject.Inject;
 import generator.FileNameGenerator;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +17,7 @@ import java.nio.channels.ReadableByteChannel;
  * FTP server using Apache Commons Net API.
  * @author www.codejava.net
  */
-public class FtpDownloader implements Downloader {
+public class FtpDownloader extends AbstractDownloader {
     private FileNameGenerator fng;
 
     @Inject
@@ -25,7 +26,7 @@ public class FtpDownloader implements Downloader {
     }
 
     @Override
-    public void download(URI uri) throws IOException {
+    protected File _getFile(URI uri) throws IOException {
         URLConnection conn = uri.toURL().openConnection();
         /*
         String userpass = username + ":" + password;
@@ -45,5 +46,6 @@ public class FtpDownloader implements Downloader {
         }
 
         is.close();
+        return new File(fileName);
     }
 }

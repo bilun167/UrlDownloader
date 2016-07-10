@@ -1,18 +1,8 @@
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import downloader.FtpDownloader;
-import downloader.HttpDownloader;
-import guice.MainModule;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 /**
  * Created by taihuynh on 9/7/16.
  */
 public class Main {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Injector dlInjector = Guice.createInjector(new MainModule());
         HttpDownloader httpDownloader = dlInjector.getInstance(HttpDownloader.class);
         try {
@@ -31,5 +21,7 @@ public class Main {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-    }
+
+        //            URI uri = new URI("sftp://taihuynh@tais-mbp://Users/taihuynh/jayeson/workspace/jayeson.portal.admin/app-client/typings.json");
+    }*/
 }

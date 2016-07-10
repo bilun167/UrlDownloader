@@ -1,11 +1,10 @@
 package downloader;
 
-import java.io.IOException;
-import java.net.URI;
+import java.io.File;
 
 /**
  * Created by taihuynh on 8/7/16.
  */
 public interface Downloader {
-    void download(URI url) throws IOException;
+    File download(String url) throws DownloadException;
 }

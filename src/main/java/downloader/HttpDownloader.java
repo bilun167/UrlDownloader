@@ -3,6 +3,7 @@ package downloader;
 import com.google.inject.Inject;
 import generator.FileNameGenerator;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +15,7 @@ import java.nio.channels.ReadableByteChannel;
 /**
  * Created by taihuynh on 8/7/16.
  */
-public class HttpDownloader implements Downloader {
+public class HttpDownloader extends AbstractDownloader {
     private FileNameGenerator fng;
 
     @Inject
@@ -23,7 +24,7 @@ public class HttpDownloader implements Downloader {
     }
 
     @Override
-    public void download(URI uri) throws IOException {
+    protected File _getFile(URI uri) throws IOException {
         URLConnection conn = uri.toURL().openConnection();
         /*
         String userpass = username + ":" + password;
@@ -48,7 +49,8 @@ public class HttpDownloader implements Downloader {
             ReadableByteChannel rbc = Channels.newChannel(is);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
         }
-
+System.out.println(fileName);
         is.close();
+        return new File(fileName);
     }
 }
