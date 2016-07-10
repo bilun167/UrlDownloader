@@ -42,17 +42,18 @@ public class DownloadExecutor {
 
     public List<CompletableFuture<File>> download(String... urls) {
         return Arrays.stream(urls).map(site -> {
-            CompletableFuture<File> result = new CompletableFuture<>();
+            CompletableFuture<File> cf = new CompletableFuture<>();
             CompletableFuture.supplyAsync(() -> {
                 try {
                     File f = getDownloader(site).download(site);
-                    result.complete(f);
+                    cf.complete(f);
+                    return f;
                 } catch (DownloadException e) {
-                    result.completeExceptionally(e);
+                    cf.completeExceptionally(e);
+                    return null;
                 }
-                return result;
             }, executorService);
-            return result;
+            return cf;
         }).collect(Collectors.toList());
     }
 
@@ -70,8 +71,8 @@ public class DownloadExecutor {
         DownloadExecutor dl = new DownloadExecutor();
         List<CompletableFuture<File>> futures =
                 dl.download("http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
-                "ftp://speedtest.tele2.net/3MB.zip",
+                "ftp://speedtest.tele2.net/1MB.zip",
                 "sftp://taihuynh@tais-mbp://Users/taihuynh/jayeson/workspace/jayeson.portal.admin/app-client/typings.json");
-        dl.allDone(futures);
+        dl.allDone(futures).join();
     }
 }
