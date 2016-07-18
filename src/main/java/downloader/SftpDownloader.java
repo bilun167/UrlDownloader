@@ -36,24 +36,14 @@ public class SftpDownloader extends AbstractDownloader {
         String fileName = fng.generate(uri);
         try {
             session = jsch.getSession(uri.getUserInfo(), uri.getHost());
-            // "interactive" version
-            // can selectively update specified known_hosts file
-            // need to implement UserInfo interface
-            // MyUserInfo is a swing implementation provided in
-            //  examples/Sftp.java in the JSch dist
             UserInfo ui = new MyUserInfo();
             session.setUserInfo(ui);
-
-            // OR non-interactive version. Relies in host key being in known-hosts file
             session.setPassword(ui.getPassword());
-
             session.connect();
 
             Channel channel = session.openChannel(uri.getScheme());
             channel.connect();
-
             sftpChannel = (ChannelSftp) channel;
-
             try {
                 sftpChannel.get(uri.getPath(), fileName);
             } catch (SftpException e) {
@@ -63,7 +53,6 @@ public class SftpDownloader extends AbstractDownloader {
                     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
                 }
             }
-
         } catch (JSchException|SftpException e) {
             return null;
         } finally {
@@ -79,7 +68,6 @@ public class SftpDownloader extends AbstractDownloader {
             jsch.setKnownHosts(knownHostsFilename);
         } catch (JSchException e) {
             // do nothing
-            e.printStackTrace();
         }
     }
 

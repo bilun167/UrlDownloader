@@ -13,7 +13,7 @@ import java.util.UUID;
  */
 @Singleton
 public class FileNameGenerator {
-    public static String generate(URI url) {
+    public String generate(URI url) {
         String path = url.getPath();
         String fileName;
         while (path.lastIndexOf("/") == path.length() - 1)
