@@ -1,4 +1,4 @@
-package executor;
+package demo;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.inject.Guice;
