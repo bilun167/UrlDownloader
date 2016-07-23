@@ -19,6 +19,8 @@ public class HttpDownloadConfig {
     // Scheduled interval to maintenance the connection pool
     private long maintainInterval;
 
+    private boolean autoRedirect;
+
     public HttpDownloadConfig() {
         connectionTimeout = 30000;
         socketTimeout = 30000;
@@ -26,6 +28,7 @@ public class HttpDownloadConfig {
         maxPerRoute = 100;
         maxIdleAllowed = 30000;
         maintainInterval = 10000;
+        autoRedirect = false;
     }
 
     public int getConnectionTimeout() {
@@ -76,4 +79,11 @@ public class HttpDownloadConfig {
         this.maintainInterval = maintainInterval;
     }
 
+    public boolean getAutoRedirect() {
+        return autoRedirect;
+    }
+
+    public void setAutoRedirect(boolean autoRedirect) {
+        autoRedirect = autoRedirect;
+    }
 }
