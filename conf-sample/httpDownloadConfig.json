@@ -3,7 +3,6 @@
   "maxPerRoute": 100,
   "maxIdleAllowed": 30000,
   "maintainInterval": 10000,
-  "threadPoolSize": 100,
   "connectionTimeout": 30000;
   "socketTimeout": 30000;
 }

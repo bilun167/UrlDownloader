@@ -2,7 +2,6 @@ package downloader.http;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import downloader.HttpDownloadConfig;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.slf4j.Logger;

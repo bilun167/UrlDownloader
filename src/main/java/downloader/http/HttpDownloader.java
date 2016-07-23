@@ -2,7 +2,6 @@ package downloader.http;
 
 import com.google.inject.Inject;
 import downloader.AbstractDownloader;
-import downloader.HttpDownloadConfig;
 import generator.FileNameGenerator;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.client.params.CookiePolicy;

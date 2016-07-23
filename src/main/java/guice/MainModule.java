@@ -1,7 +1,6 @@
 package guice;
 
 import com.google.inject.AbstractModule;
-import downloader.http.HttpModule;
 import generator.FileNameGenerator;
 
 /**

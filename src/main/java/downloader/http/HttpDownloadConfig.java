@@ -1,4 +1,4 @@
-package downloader;
+package downloader.http;
 
 import com.google.inject.Singleton;
 

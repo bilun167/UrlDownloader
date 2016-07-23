@@ -1,7 +1,10 @@
-package downloader.http;
+package guice;
 
 import com.google.inject.AbstractModule;
-import downloader.HttpDownloadConfig;
+import downloader.http.BasicRequestInterceptor;
+import downloader.http.BasicResponseInterceptor;
+import downloader.http.ConnectionManagerFactory;
+import downloader.http.HttpDownloadConfig;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import utils.JacksonConfig;
 import utils.JacksonConfigFormat;
@@ -10,7 +13,7 @@ import utils.JacksonConfigFormat;
  * Created by taihuynh on 18/7/16.
  */
 public class HttpModule extends AbstractModule {
-    public static final String DEFAULT_CONFIG_PATH = "httpDownloadConfig.json";
+    public static final String DEFAULT_CONFIG_PATH = "conf/httpDownloadConfig.json";
     public static final String DEFAULT_SYSTEM_VAR = "httpDownloadConfig";
 
     private HttpDownloadConfig httpDownloadConfig = null;
