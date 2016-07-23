@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import downloader.*;
+import downloader.http.HttpDownloader;
 import exception.DownloadException;
 import guice.MainModule;
 
