@@ -4,5 +4,6 @@
   "maxIdleAllowed": 30000,
   "maintainInterval": 10000,
   "connectionTimeout": 30000,
-  "socketTimeout": 30000
+  "socketTimeout": 30000,
+  "autoRedirect": true
 }

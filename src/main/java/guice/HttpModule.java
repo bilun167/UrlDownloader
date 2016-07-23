@@ -1,10 +1,7 @@
 package guice;
 
 import com.google.inject.AbstractModule;
-import downloader.http.BasicRequestInterceptor;
-import downloader.http.BasicResponseInterceptor;
-import downloader.http.ConnectionManagerFactory;
-import downloader.http.HttpDownloadConfig;
+import downloader.http.*;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import utils.JacksonConfig;
 import utils.JacksonConfigFormat;
@@ -51,8 +48,10 @@ public class HttpModule extends AbstractModule {
         bind(HttpDownloadConfig.class).toInstance(httpDownloadConfig);
 
         bind(PoolingClientConnectionManager.class).toInstance(cm);
-
         ConnectionManagerFactory cmf = new ConnectionManagerFactory(httpDownloadConfig, cm);
         bind(ConnectionManagerFactory.class).toInstance(cmf);
+
+        BasicHttpClient client = new BasicHttpClient(httpDownloadConfig, requestInterceptor, responseInterceptor, cmf);
+        bind(BasicHttpClient.class).toInstance(client);
     }
 }
