@@ -14,7 +14,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.net.URLConnection;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
@@ -43,15 +42,15 @@ public class HttpDownloader extends AbstractDownloader {
         String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
         conn.setRequestProperty ("Authorization", basicAuth);
         */
-        InputStream is = entity.getContent();
-        String fileName = fng.generate(uri);
 
-        try (FileOutputStream fos = new FileOutputStream(fileName)) {
+        String fileName = fng.generate(uri);
+        try (InputStream is = entity.getContent();
+             FileOutputStream fos = new FileOutputStream(fileName)) {
             ReadableByteChannel rbc = Channels.newChannel(is);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
         }
 
-        is.close();
+        httpget.releaseConnection();
         return new File(fileName);
     }
 
