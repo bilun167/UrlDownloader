@@ -68,13 +68,10 @@ public class DownloadExecutor {
 
     public static void main(String[] args) {
         DownloadExecutor dl = new DownloadExecutor();
-        CompletableFuture<List<File>> files =
-                dl.download("http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
+        CompletableFuture<List<File>> files = dl.download(args);
+                /*dl.download("http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
                 "ftp://speedtest.tele2.net/1MB.zip",
-                "sftp://demo:password@test.rebex.net/readme.txt");
-
-
-        //
+                "sftp://demo:password@test.rebex.net/readme.txt");*/
         files.join();
     }
 }
