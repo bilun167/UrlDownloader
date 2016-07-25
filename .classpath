@@ -1,0 +1,51 @@
+<classpath>
+  <classpathentry kind="src" path="src/main/scala-2.11"/>
+  <classpathentry kind="src" path="src/main/scala"/>
+  <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="src" path="src/main/resources"/>
+  <classpathentry kind="src" path="target/scala-2.11/src_managed/main"/>
+  <classpathentry kind="src" path="target/scala-2.11/resource_managed/main"/>
+  <classpathentry kind="src" path="src/test/scala-2.11"/>
+  <classpathentry kind="src" path="src/test/scala"/>
+  <classpathentry kind="src" path="src/test/java"/>
+  <classpathentry kind="src" path="src/test/resources"/>
+  <classpathentry kind="src" path="target/scala-2.11/src_managed/test"/>
+  <classpathentry kind="src" path="target/scala-2.11/resource_managed/test"/>
+  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.google.inject/guice/srcs/guice-3.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.google.inject/guice/jars/guice-3.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/javax.inject/javax.inject/srcs/javax.inject-1-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/aopalliance/aopalliance/srcs/aopalliance-1.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.sonatype.sisu.inject/cglib/srcs/cglib-2.2.1-v20090111-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.sonatype.sisu.inject/cglib/jars/cglib-2.2.1-v20090111.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/asm/asm/srcs/asm-3.1-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/asm/asm/jars/asm-3.1.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.jcraft/jsch/srcs/jsch-0.1.53-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.jcraft/jsch/jars/jsch-0.1.53.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.google.guava/guava/srcs/guava-19.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.google.guava/guava/bundles/guava-19.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-collections/srcs/guava-collections-r03-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-collections/jars/guava-collections-r03.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-annotations/srcs/guava-annotations-r03-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-annotations/jars/guava-annotations-r03.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-primitives/srcs/guava-primitives-r03-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-primitives/jars/guava-primitives-r03.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-base/srcs/guava-base-r03-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.google.guava/guava-base/jars/guava-base-r03.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpclient/srcs/httpclient-4.5.2-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.5.2.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpcore/srcs/httpcore-4.4.5-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.4.5.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/commons-logging/commons-logging/srcs/commons-logging-1.2-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.2.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/commons-codec/commons-codec/srcs/commons-codec-1.9-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.9.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/fluent-hc/srcs/fluent-hc-4.5.2-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/fluent-hc/jars/fluent-hc-4.5.2.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpcore-nio/srcs/httpcore-nio-4.4.5-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpcore-nio/jars/httpcore-nio-4.4.5.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpclient-cache/srcs/httpclient-cache-4.5.2-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.apache.httpcomponents/httpclient-cache/jars/httpclient-cache-4.5.2.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/commons-net/commons-net/srcs/commons-net-3.5-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/commons-net/commons-net/jars/commons-net-3.5.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/ch.qos.logback/logback-classic/srcs/logback-classic-1.1.7-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.7.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/ch.qos.logback/logback-core/srcs/logback-core-1.1.7-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.7.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.slf4j/slf4j-api/srcs/slf4j-api-1.7.20-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.20.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/srcs/jackson-core-2.8.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.8.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/srcs/jackson-databind-2.8.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.8.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/srcs/jackson-annotations-2.8.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.8.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.dataformat/jackson-dataformat-xml/srcs/jackson-dataformat-xml-2.8.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.dataformat/jackson-dataformat-xml/bundles/jackson-dataformat-xml-2.8.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-jaxb-annotations/srcs/jackson-module-jaxb-annotations-2.8.0-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.fasterxml.jackson.module/jackson-module-jaxb-annotations/bundles/jackson-module-jaxb-annotations-2.8.0.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.codehaus.woodstox/stax2-api/srcs/stax2-api-3.1.4-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.codehaus.woodstox/stax2-api/bundles/stax2-api-3.1.4.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/com.fasterxml.woodstox/woodstox-core/srcs/woodstox-core-5.0.2-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/com.fasterxml.woodstox/woodstox-core/bundles/woodstox-core-5.0.2.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.mockito/mockito-core/srcs/mockito-core-1.10.19-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-1.10.19.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.objenesis/objenesis/srcs/objenesis-2.1-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-2.1.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.hamcrest/hamcrest-all/srcs/hamcrest-all-1.3-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.hamcrest/hamcrest-all/jars/hamcrest-all-1.3.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/junit/junit/srcs/junit-4.12-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/junit/junit/jars/junit-4.12.jar"/>
+  <classpathentry sourcepath="/Users/taihuynh/.ivy2/cache/org.hamcrest/hamcrest-core/srcs/hamcrest-core-1.3-sources.jar" kind="lib" path="/Users/taihuynh/.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.3.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="output" path="bin"/>
+</classpath>

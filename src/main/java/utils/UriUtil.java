@@ -1,5 +1,8 @@
 package utils;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 /**
  * Created by taihuynh on 25/7/16.
  */
@@ -25,4 +28,9 @@ public class UriUtil {
         parsedInfo[1] = userInfo.substring(splitIndex + 1);
         return parsedInfo;
     }
+    
+    public static URI parseURL(String url) throws URISyntaxException {
+        return new URI(url);
+    }
+
 }

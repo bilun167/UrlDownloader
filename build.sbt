@@ -27,5 +27,7 @@ libraryDependencies ++= Seq(
 	"com.fasterxml.jackson.core" % "jackson-databind" % "2.8.0",
 	"com.fasterxml.jackson.dataformat" % "jackson-dataformat-xml" % "2.8.0",
 
+	"org.mockito" % "mockito-core" % "1.10.19",
+	"org.hamcrest" % "hamcrest-all" % "1.3",
 	"junit" % "junit" % "4.12" % Test
 )

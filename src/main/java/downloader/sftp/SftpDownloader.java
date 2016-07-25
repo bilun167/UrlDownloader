@@ -38,9 +38,6 @@ public class SftpDownloader extends AbstractDownloader {
             channel.connect();
             sftpChannel = (ChannelSftp) channel;
 
-            for (Object s : sftpChannel.ls(uri.getPath()))
-                System.out.println(s);
-
             try (InputStream is = sftpChannel.get(uri.getPath());
                  FileOutputStream fos = new FileOutputStream(fileName)) {
                 ReadableByteChannel rbc = Channels.newChannel(is);

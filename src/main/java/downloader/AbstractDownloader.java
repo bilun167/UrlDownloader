@@ -1,6 +1,8 @@
 package downloader;
 
 import exception.DownloadException;
+import utils.UriUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,14 +17,10 @@ import java.net.URISyntaxException;
 public abstract class AbstractDownloader implements Downloader {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
-    protected URI parseURL(String url) throws URISyntaxException {
-        return new URI(url);
-    }
-
     @Override
     public File download(String url) throws DownloadException {
         try {
-            URI uri = parseURL(url);
+            URI uri = UriUtil.parseURL(url);
             return _download(uri, 3);
         } catch (URISyntaxException e) {
             logger.error("Cannot parse url {}", url);
