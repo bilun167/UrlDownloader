@@ -6,6 +6,7 @@ import com.google.inject.Injector;
 import downloader.*;
 import downloader.ftp.FtpDownloader;
 import downloader.http.HttpDownloader;
+import downloader.sftp.SftpDownloader;
 import exception.DownloadException;
 import guice.MainModule;
 
