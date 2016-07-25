@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import downloader.*;
+import downloader.ftp.FtpDownloader;
 import downloader.http.HttpDownloader;
 import exception.DownloadException;
 import guice.MainModule;
@@ -72,6 +73,7 @@ public class DownloadExecutor {
                 dl.download("http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
                 "ftp://speedtest.tele2.net/1MB.zip",
                 "sftp://taihuynh@tais-mbp://Users/taihuynh/jayeson/workspace/jayeson.portal.admin/app-client/typings.json");
+
 
         //
         files.join();

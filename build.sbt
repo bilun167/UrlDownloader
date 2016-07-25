@@ -18,6 +18,9 @@ libraryDependencies ++= Seq(
 	"org.apache.httpcomponents" % "fluent-hc" % "4.5.2",
 	"org.apache.httpcomponents" % "httpcore-nio" % "4.4.5",
 	"org.apache.httpcomponents" % "httpclient-cache" % "4.5.2",
+	
+	"commons-net" % "commons-net" % "3.5",
+	
 	"ch.qos.logback" % "logback-classic" % "1.1.7",
 
 	"com.fasterxml.jackson.core" % "jackson-core" % "2.8.0",
