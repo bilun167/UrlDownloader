@@ -52,7 +52,8 @@ public class SftpDownloader extends AbstractDownloader {
         } finally {
             if (sftpChannel != null)
                 sftpChannel.exit();
-            session.disconnect();
+            if (session != null)
+                session.disconnect();
         }
 
     }

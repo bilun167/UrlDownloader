@@ -38,7 +38,7 @@ public class DownloadExecutor {
         executorService = Executors.newFixedThreadPool(10, tf);
     }
 
-    private Downloader getDownloader(String url) throws DownloadException {
+    protected Downloader getDownloader(String url) throws DownloadException {
         if (url.startsWith("sftp"))
             return sftpDownloader;
         else if (url.startsWith("ftp"))
