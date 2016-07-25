@@ -14,5 +14,6 @@ public class MainModule extends AbstractModule {
         bind(FileNameGenerator.class).toInstance(fng);
         install(new HttpModule());
         install(new FtpModule());
+        install(new SftpModule());
     }
 }

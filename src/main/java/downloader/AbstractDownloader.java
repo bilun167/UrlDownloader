@@ -21,28 +21,33 @@ public abstract class AbstractDownloader implements Downloader {
 
     @Override
     public File download(String url) throws DownloadException {
-        return _download(url, 3);
+        try {
+            URI uri = parseURL(url);
+            return _download(uri, 3);
+        } catch (URISyntaxException e) {
+            logger.error("Cannot parse url {}", url);
+            return null;
+        }
     }
 
-    protected File _download(String url, int retry) throws DownloadException {
+    protected File _download(URI uri, int retry) throws DownloadException {
         if (retry <= 0)
             return null;
 
         try {
-            URI uri = parseURL(url);
             File file = _getFile(uri);
 
             if (file == null && retry > 0) {
                 logger.debug("Download file unsuccessfully. Retrying. Number of retry left {}", retry - 1);
-                return _download(url, retry - 1);
+                return _download(uri, retry - 1);
             }
 
             return file;
-        } catch (URISyntaxException|IOException e) {
+        } catch (IOException e) {
             if (retry > 0) {
                 logger.debug("Download file unsuccessfully. Retrying. Number of retry left {}. Exception: {}",
                         retry - 1, e.getMessage());
-                return _download(url, retry - 1);
+                return _download(uri, retry - 1);
             }
             throw new DownloadException(e.getMessage());
         }

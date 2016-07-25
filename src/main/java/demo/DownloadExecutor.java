@@ -6,6 +6,7 @@ import com.google.inject.Injector;
 import downloader.*;
 import downloader.ftp.FtpDownloader;
 import downloader.http.HttpDownloader;
+import downloader.sftp.SftpDownloader;
 import exception.DownloadException;
 import guice.MainModule;
 
@@ -70,9 +71,9 @@ public class DownloadExecutor {
     public static void main(String[] args) {
         DownloadExecutor dl = new DownloadExecutor();
         CompletableFuture<List<File>> files =
-                dl.download("http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
-                "ftp://speedtest.tele2.net/1MB.zip",
-                "sftp://taihuynh@tais-mbp://Users/taihuynh/jayeson/workspace/jayeson.portal.admin/app-client/typings.json");
+                dl.download(//"http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
+                //"ftp://speedtest.tele2.net/1MB.zip",
+                "sftp://taihuynh:Us16072105@tais-mbp://Users/taihuynh/jayeson/workspace/jayeson.portal.admin/app-client/typings.json");
 
 
         //
