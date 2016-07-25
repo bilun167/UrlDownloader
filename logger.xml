@@ -1,0 +1,80 @@
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+  	<encoder>
+		<pattern>%logger{15} - %message%n%xException{5}</pattern>
+	</encoder>
+  </appender>
+
+  <appender name="APPLICATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./logs/application.log</file>
+	<encoder>
+		<pattern>%date - [%level] - %logger{1} in %thread	%message%xException%n</pattern>
+	</encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>./logs/application.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <appender name="FtpDownloader" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./logs/ftpDownloader.log</file>
+    <encoder>
+		<pattern>%date - [%level] - %logger{1} in %thread	%message%xException%n</pattern>
+	</encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>./logs/ftpDownloader.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <appender name="HttpDownloader" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./logs/httpDownloader.log</file>
+    <encoder>
+      <pattern>%date - [%level] - %logger{1} in %thread	%message%xException%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>./logs/httpDownloader.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <appender name="SftpDownloader" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>./logs/sftpDownloader.log</file>
+    <encoder>
+      <pattern>%date - [%level] - %logger{1} in %thread	%message%xException%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>./logs/sftpDownloader.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <logger level="DEBUG" name="Com.msg" additivity="false">
+	<appender-ref ref="STDOUT"/>
+  </logger>
+
+  <logger level="ERROR" name="org.apache" additivity="false">
+	<appender-ref ref="APPLICATION"/>
+  </logger>
+
+
+  <logger name="FtpDownloader.class" additivity='false'>
+    <level value="all"/>
+  <appender-ref ref="FtpDownloader"/>
+  </logger>
+
+  <logger name="HttpDownloader.class" additivity='false'>
+  	<level value="all"/>
+  	<appender-ref ref="HttpDownloader"/>
+  </logger>
+
+  <logger name="SftpDownloader.class" additivity='false'>
+    <level value="all"/>
+    <appender-ref ref="SftpDownloader"/>
+  </logger>
+
+  <root level="TRACE">
+	<appender-ref ref="APPLICATION" />
+  </root>
+
+</configuration>

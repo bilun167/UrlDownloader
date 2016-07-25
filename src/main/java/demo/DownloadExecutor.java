@@ -3,7 +3,7 @@ package demo;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import downloader.*;
+import downloader.Downloader;
 import downloader.ftp.FtpDownloader;
 import downloader.http.HttpDownloader;
 import downloader.sftp.SftpDownloader;
@@ -13,7 +13,10 @@ import guice.MainModule;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 import java.util.stream.Collectors;
 
 /**
@@ -35,27 +38,22 @@ public class DownloadExecutor {
         executorService = Executors.newFixedThreadPool(10, tf);
     }
 
-    private Downloader getDownloader(String url) {
+    protected Downloader getDownloader(String url) throws DownloadException {
         if (url.startsWith("sftp"))
             return sftpDownloader;
         else if (url.startsWith("ftp"))
             return ftpDownloader;
-        else
+        else if (url.startsWith(("http")))
             return httpDownloader;
+        else
+            throw new DownloadException("Unsupported protocol.");
     }
 
     public CompletableFuture<List<File>> download(String... urls) {
         List<CompletableFuture<File>> futures = Arrays.stream(urls).map(site -> {
-            CompletableFuture<File> cf = new CompletableFuture<>();
-            CompletableFuture.supplyAsync(() -> {
-                try {
-                    File f = getDownloader(site).download(site);
-                    cf.complete(f);
-                    return f;
-                } catch (DownloadException e) {
-                    cf.completeExceptionally(e);
-                    return null;
-                }
+            CompletableFuture<File> cf = CompletableFuture.supplyAsync(() -> {
+                File f = getDownloader(site).download(site);
+                return f;
             }, executorService);
             return cf;
         }).collect(Collectors.toList());
@@ -70,13 +68,10 @@ public class DownloadExecutor {
 
     public static void main(String[] args) {
         DownloadExecutor dl = new DownloadExecutor();
-        CompletableFuture<List<File>> files =
-                dl.download(//"http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
-                //"ftp://speedtest.tele2.net/1MB.zip",
-                "sftp://taihuynh:Us16072105@tais-mbp://Users/taihuynh/jayeson/workspace/jayeson.portal.admin/app-client/typings.json");
-
-
-        //
+        CompletableFuture<List<File>> files = dl.download(args);
+                /*dl.download("http://spatialkeydocs.s3.amazonaws.com/FL_insurance_sample.csv.zip",
+                "ftp://speedtest.tele2.net/1MB.zip",
+                "sftp://demo:password@test.rebex.net/readme.txt");*/
         files.join();
     }
 }

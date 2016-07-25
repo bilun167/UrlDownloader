@@ -50,8 +50,10 @@ public class SftpDownloader extends AbstractDownloader {
         } catch (JSchException|SftpException e) {
             return null;
         } finally {
-            sftpChannel.exit();
-            session.disconnect();
+            if (sftpChannel != null)
+                sftpChannel.exit();
+            if (session != null)
+                session.disconnect();
         }
 
     }
