@@ -18,42 +18,35 @@ import java.nio.channels.ReadableByteChannel;
  */
 public class SftpDownloader extends AbstractDownloader {
     private FileNameGenerator fng;
+    private BasicSftpClient client;
 
     @Inject
-    public SftpDownloader(FileNameGenerator fng) {
+    public SftpDownloader(FileNameGenerator fng, BasicSftpClient client) {
         this.fng = fng;
+        this.client = client;
     }
 
     @Override
     protected File _getFile(URI uri) throws IOException {
-        JSch jsch = new JSch();
-        String knownHostsFilename = "/Users/" + uri.getUserInfo() + "/.ssh/known_hosts";
-        appendKnownHosts(jsch, knownHostsFilename);
-
         Session session = null;
         ChannelSftp sftpChannel = null;
         String fileName = fng.generate(uri);
         try {
-            session = jsch.getSession(uri.getUserInfo(), uri.getHost());
-            //session.setPassword(ui.getPassword());
-
-            session.connect();
+            session = client.connect(uri);
 
             Channel channel = session.openChannel(uri.getScheme());
             channel.connect();
-
             sftpChannel = (ChannelSftp) channel;
 
-            try {
-                sftpChannel.get(uri.getPath(), fileName);
-            } catch (SftpException e) {
-                try (InputStream is = sftpChannel.get(uri.getPath());
-                        FileOutputStream fos = new FileOutputStream(fileName)) {
-                    ReadableByteChannel rbc = Channels.newChannel(is);
-                    fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                }
-            }
+            for (Object s : sftpChannel.ls(uri.getPath()))
+                System.out.println(s);
 
+            try (InputStream is = sftpChannel.get(uri.getPath());
+                 FileOutputStream fos = new FileOutputStream(fileName)) {
+                ReadableByteChannel rbc = Channels.newChannel(is);
+                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+            }
+            return new File(fileName);
         } catch (JSchException|SftpException e) {
             return null;
         } finally {
@@ -61,15 +54,5 @@ public class SftpDownloader extends AbstractDownloader {
             session.disconnect();
         }
 
-        return new File(fileName);
-    }
-
-    private void appendKnownHosts(JSch jsch, String knownHostsFilename) {
-        try {
-            jsch.setKnownHosts(knownHostsFilename);
-        } catch (JSchException e) {
-            // do nothing
-            e.printStackTrace();
-        }
     }
 }

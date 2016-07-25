@@ -2,6 +2,7 @@ package downloader.ftp;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import utils.UriUtil;
 
 import java.io.IOException;
 import java.net.URI;
@@ -42,7 +43,7 @@ public class BasicFtpClient {
             ftp.connect(uri.getHost(), config.getPort());
 
         if (uri.getUserInfo() != null) {
-            String[] parsedInfo = parseUserInfo(uri.getUserInfo());
+            String[] parsedInfo = UriUtil.parseUserInfo(uri.getUserInfo());
             ftp.login(parsedInfo[0], parsedInfo[1]);
         }
         else
@@ -50,14 +51,4 @@ public class BasicFtpClient {
         ftp.setFileType(FTP.BINARY_FILE_TYPE);
     }
 
-    protected String[] parseUserInfo(String userInfo) {
-        String[] parsedInfo = new String[2];
-        int splitIndex = 0;
-        if ((splitIndex = userInfo.indexOf(":")) == - 1)
-            return parsedInfo;
-
-        parsedInfo[0] = userInfo.substring(0, splitIndex);
-        parsedInfo[1] = userInfo.substring(splitIndex);
-        return parsedInfo;
-    }
 }

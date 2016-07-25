@@ -1,0 +1,6 @@
+{
+  "user": "anonymous",
+  "password": "",
+  "port": 22,
+  "knownHosts": "./conf-sample/known_hosts"
+}
