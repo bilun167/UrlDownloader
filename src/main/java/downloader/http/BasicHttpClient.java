@@ -1,6 +1,10 @@
 package downloader.http;
 
 import com.google.inject.Inject;
+
+import downloader.ftp.FtpDownloadConfig;
+
+import org.apache.commons.net.ftp.FTPClient;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.client.params.CookiePolicy;
 import org.apache.http.conn.ClientConnectionManager;
@@ -28,6 +32,18 @@ public class BasicHttpClient {
     private DefaultHttpClient httpClient;
     private HttpDownloadConfig config;
 
+    /**
+     * Client for executing http request with configurable properties from 
+     * {@link HttpDownloadConfig}. The config also contains setup for the 
+     * underlying {@link BasicHttpClient} environment like cleanup threads, 
+     * maintenance thread. This client can be decorated by the request interceptors 
+     * and response interceptors as given.
+     *  
+     * @param config
+     * @param requestInterceptor
+     * @param responseInterceptor
+     * @param cmf
+     */
     @Inject
     public BasicHttpClient( HttpDownloadConfig config,
                             BasicRequestInterceptor requestInterceptor,

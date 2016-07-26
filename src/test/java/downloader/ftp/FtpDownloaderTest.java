@@ -31,6 +31,7 @@ public class FtpDownloaderTest {
 		when(client.getFtp()).thenReturn(ftp);
 		when(ftp.retrieveFileStream(uri.getPath()))
 			.thenReturn(new FileInputStream("src/test/resources/1MB.zip"));
+		when(ftp.completePendingCommand()).thenReturn(true);
 		
 		File file = dl._getFile(uri);
 		

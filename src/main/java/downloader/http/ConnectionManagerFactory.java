@@ -24,6 +24,12 @@ public class ConnectionManagerFactory {
     // We only provide a shared pooling connection manager now
     private PoolingClientConnectionManager cm;
 
+    /**
+     * A factory to instantiate connection manager and register the 2 always-running
+     * maintenance thread and clean up thread to enhance httpClient execution.
+     * @param config
+     * @param cm
+     */
     @Inject
     public ConnectionManagerFactory(HttpDownloadConfig config, PoolingClientConnectionManager cm) {
         this.config = config;

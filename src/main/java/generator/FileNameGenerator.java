@@ -2,6 +2,8 @@ package generator;
 
 import com.google.inject.Singleton;
 
+import downloader.Downloader;
+
 import java.net.URI;
 import java.util.UUID;
 
@@ -13,6 +15,14 @@ import java.util.UUID;
  */
 @Singleton
 public class FileNameGenerator {
+	/**
+	 * Given a uri, this method parse the last part after "/" 
+	 * (i.e, the remote fileName) and suggest {@link Downloader} 
+	 * instance to use this name as the local fileName.
+	 * 
+	 * @param url
+	 * @return
+	 */
     public String generate(URI url) {
         String path = url.getPath();
         String fileName;

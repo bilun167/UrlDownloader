@@ -1,12 +1,17 @@
 package guice;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+
+import downloader.ftp.FtpDownloader;
 import downloader.sftp.BasicSftpClient;
 import downloader.sftp.SftpDownloadConfig;
 import utils.JacksonConfig;
 import utils.JacksonConfigFormat;
 
 /**
+ * {@link Guice} module for {@link SftpDownloader}
+ * 
  * Created by taihuynh on 18/7/16.
  */
 public class SftpModule extends AbstractModule {

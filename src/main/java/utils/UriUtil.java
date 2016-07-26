@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
+ * Common utils for parsing url information.
+ * 
  * Created by taihuynh on 25/7/16.
  */
 public class UriUtil {
@@ -29,6 +31,13 @@ public class UriUtil {
         return parsedInfo;
     }
     
+    /**
+     * Parse an input string to a proper URI instance.
+     * 
+     * @param url
+     * @return
+     * @throws URISyntaxException
+     */
     public static URI parseURL(String url) throws URISyntaxException {
         return new URI(url);
     }

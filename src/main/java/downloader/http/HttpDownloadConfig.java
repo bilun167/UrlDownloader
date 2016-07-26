@@ -21,6 +21,9 @@ public class HttpDownloadConfig {
 
     private boolean autoRedirect;
 
+    /**
+     * Config to fine tune the performance of httpDownloader
+     */
     public HttpDownloadConfig() {
         connectionTimeout = 30000;
         socketTimeout = 30000;
@@ -84,6 +87,6 @@ public class HttpDownloadConfig {
     }
 
     public void setAutoRedirect(boolean autoRedirect) {
-        autoRedirect = autoRedirect;
+        this.autoRedirect = autoRedirect;
     }
 }

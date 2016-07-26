@@ -20,7 +20,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
- * Jackson config is a utility class to read / write XML and JSON configuration file
+ * Jackson config is a utility class to read / write XML and JSON configuration file.
+ * 
  * Created by taihuynh on 18/7/16.
  */
 public class JacksonConfig {

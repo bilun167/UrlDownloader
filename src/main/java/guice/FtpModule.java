@@ -1,12 +1,17 @@
 package guice;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+
 import downloader.ftp.BasicFtpClient;
 import downloader.ftp.FtpDownloadConfig;
+import downloader.ftp.FtpDownloader;
 import utils.JacksonConfig;
 import utils.JacksonConfigFormat;
 
 /**
+ * {@link Guice} module for {@link FtpDownloader}
+ * 
  * Created by taihuynh on 18/7/16.
  */
 public class FtpModule extends AbstractModule {

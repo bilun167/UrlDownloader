@@ -26,8 +26,8 @@ java -classpath . -Dlogback.configurationFile="./logger.xml" -jar downloader.jar
 
 > **Note:**
 
-> - There are configs for tuning performance of `HttpDownloader` as well as configs for storing credentials for `FtpDownloader` and `SftpDownloader`
+> - There are configs for tuning performance of `HttpDownloader` as well as configs for storing credentials for `FtpDownloader` and `SftpDownloader`.
+> - Sample configs in `conf-sample/` are guideline for providing configs. Copy folder `conf-sample/` to `conf/` and tune before execution.
 > - All downloaded files remain in the root directory of this project.
 > - This project was designed with fault tolerance. A failed download will be retried 3 times. 
 > - At current `demo.DownloadExecutor` package, the executor does not aim to utilize computer capability to the maximum. It is just a demo of how to use the downloaders. Better and more complex service implementation can easily wraps necessary `CompletableFuture` in more capable `CompletionService`, and provide more instances for each downloader.
-

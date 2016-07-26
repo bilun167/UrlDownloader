@@ -23,11 +23,21 @@ public abstract class AbstractDownloader implements Downloader {
             URI uri = UriUtil.parseURL(url);
             return _download(uri, 3);
         } catch (URISyntaxException e) {
-            logger.error("Cannot parse url {}", url);
+            logger.error("Cannot parse url {}. Exception {}", url, e);
             return null;
         }
     }
 
+    /**
+     * Logical implementation of download method, which takes care of exception 
+     * and fault tolerance. This is a recursive method that either terminate by 
+     * MAX_RETRY_ATTEMPTS or when download is successful.
+     * 
+     * @param uri
+     * @param retry
+     * @return
+     * @throws DownloadException
+     */
     protected File _download(URI uri, int retry) throws DownloadException {
         if (retry <= 0)
             return null;
@@ -44,7 +54,7 @@ public abstract class AbstractDownloader implements Downloader {
         } catch (IOException e) {
             if (retry > 0) {
                 logger.debug("Download file unsuccessfully. Retrying. Number of retry left {}. Exception: {}",
-                        retry - 1, e.getMessage());
+                        retry - 1, e);
                 return _download(uri, retry - 1);
             }
             throw new DownloadException(e.getMessage());
